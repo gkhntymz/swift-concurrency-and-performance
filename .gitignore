@@ -1,0 +1,10 @@
+# Local backups
+Apps/DemoApp_BACKUP/
+
+# Xcode
+**/xcuserdata/
+**/*.xcuserstate
+**/*.xcbkptlist
+**/*.xccheckout
+DerivedData/
+*.xcuserdatad
