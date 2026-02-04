@@ -8,21 +8,26 @@
 import UIKit
 import CoreLogging
 import CoreBenchmarks
+import RaceConditionDemo
 
 final class ViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Log.info("DemoApp launched")
+        let iterations = 10_000
 
-        let result = Measure.time(label: "noop", iterations: 10000) {
-            _ = 1 + 1
-        }
-        
-        Log.info("Measure \(result.label) avg(us)=\(result.avgMicroseconds)")
-        
-        _ = Signpost.scoped("initial-work") {
-            Thread.sleep(forTimeInterval: 0.05)
+        let broken = RaceRunner.runBroken(iterations: iterations) //unsafe
+        let lock = RaceRunner.runLockBased(iterations: iterations) //thread safe
+        let queue = RaceRunner.runSerialQueue(iterations: iterations) //thread safe
+
+        Log.info("Broken: \(broken) / \(iterations)")
+        Log.info("Lock:   \(lock) / \(iterations)")
+        Log.info("Queue:  \(queue) / \(iterations)")
+
+        Task {
+            let actor = await RaceRunner.runActor(iterations: iterations) //thread safe
+            Log.info("Actor:  \(actor) / \(iterations)")
         }
     }
 }
