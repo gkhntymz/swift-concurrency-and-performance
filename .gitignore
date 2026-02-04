@@ -8,3 +8,7 @@ Apps/DemoApp_BACKUP/
 **/*.xccheckout
 DerivedData/
 *.xcuserdatad
+
+# Swift Package Manager
+.swiftpm/
+**/.swiftpm/
