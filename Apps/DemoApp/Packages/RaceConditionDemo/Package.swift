@@ -9,8 +9,17 @@ let package = Package(
     products: [
         .library(name: "RaceConditionDemo", targets: ["RaceConditionDemo"])
     ],
+    dependencies: [
+        // RaceConditionDemo -> CoreBenchmarks (local package)
+        .package(path: "../CoreBenchmarks")
+    ],
     targets: [
-        .target(name: "RaceConditionDemo"),
+        .target(
+            name: "RaceConditionDemo",
+            dependencies: [
+                "CoreBenchmarks"
+            ]
+        ),
         .testTarget(
             name: "RaceConditionDemoTests",
             dependencies: ["RaceConditionDemo"]
