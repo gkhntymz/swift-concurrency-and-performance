@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A73170602F34B7700010C576 /* RaceConditionDemo in Frameworks */ = {isa = PBXBuildFile; productRef = A731705F2F34B7700010C576 /* RaceConditionDemo */; };
 		A79F3EDC2F30AEDF004E2309 /* CoreLogging in Frameworks */ = {isa = PBXBuildFile; productRef = A79F3EDB2F30AEDF004E2309 /* CoreLogging */; };
 		A79F3EDF2F30AEEF004E2309 /* CoreBenchmarks in Frameworks */ = {isa = PBXBuildFile; productRef = A79F3EDE2F30AEEF004E2309 /* CoreBenchmarks */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A73170602F34B7700010C576 /* RaceConditionDemo in Frameworks */,
 				A79F3EDC2F30AEDF004E2309 /* CoreLogging in Frameworks */,
 				A79F3EDF2F30AEEF004E2309 /* CoreBenchmarks in Frameworks */,
 			);
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				A79F3EDB2F30AEDF004E2309 /* CoreLogging */,
 				A79F3EDE2F30AEEF004E2309 /* CoreBenchmarks */,
+				A731705F2F34B7700010C576 /* RaceConditionDemo */,
 			);
 			productName = DemoApp;
 			productReference = A79E25502F30AC620041D55B /* DemoApp.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				A79F3EDA2F30AEDF004E2309 /* XCLocalSwiftPackageReference "Packages/CoreLogging" */,
 				A79F3EDD2F30AEEF004E2309 /* XCLocalSwiftPackageReference "Packages/CoreBenchmarks" */,
+				A731705E2F34B7700010C576 /* XCLocalSwiftPackageReference "Packages/RaceConditionDemo" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A79E25512F30AC620041D55B /* Products */;
@@ -348,6 +352,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		A731705E2F34B7700010C576 /* XCLocalSwiftPackageReference "Packages/RaceConditionDemo" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/RaceConditionDemo;
+		};
 		A79F3EDA2F30AEDF004E2309 /* XCLocalSwiftPackageReference "Packages/CoreLogging" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/CoreLogging;
@@ -359,6 +367,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A731705F2F34B7700010C576 /* RaceConditionDemo */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RaceConditionDemo;
+		};
 		A79F3EDB2F30AEDF004E2309 /* CoreLogging */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreLogging;
