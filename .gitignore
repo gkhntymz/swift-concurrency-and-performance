@@ -12,3 +12,6 @@ DerivedData/
 # Swift Package Manager
 .swiftpm/
 **/.swiftpm/
+
+# Xcode workspace shared data (local)
+**/*.xcworkspace/xcshareddata/
