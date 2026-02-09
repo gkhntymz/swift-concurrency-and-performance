@@ -7,18 +7,30 @@
 
 import Foundation
 
-enum DemoItem: CaseIterable {
-    case raceCondition
+enum DemoItem: Int, CaseIterable {
+    case cancellationBasics
+    case cooperativeCancellation
+    case viewModelStyleCancellation
 
     var title: String {
         switch self {
-        case .raceCondition: return "Race Condition"
+        case .cancellationBasics:
+            return "Cancellation Basics"
+        case .cooperativeCancellation:
+            return "Cooperative Cancellation"
+        case .viewModelStyleCancellation:
+            return "ViewModel-style Cancellation"
         }
     }
 
-    var subtitle: String {
+    func run() {
         switch self {
-        case .raceCondition: return "Broken vs Lock vs Serial Queue vs Actor (+ TSAN evidence)"
+        case .cancellationBasics:
+            CancellationBasics.run()
+        case .cooperativeCancellation:
+            CooperativeCancellation.run()
+        case .viewModelStyleCancellation:
+            ViewModelStyleCancellation.run()
         }
     }
 }

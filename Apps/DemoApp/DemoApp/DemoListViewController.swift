@@ -14,7 +14,7 @@ final class DemoListViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
-    private let demos: [DemoItem] = DemoItem.allCases
+    private let demos = DemoItem.allCases
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +30,12 @@ final class DemoListViewController: UIViewController {
 extension DemoListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        demos.count
+        DemoItem.allCases.count
     }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-
-        let item = demos[indexPath.row]
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "DemoCell",
-            for: indexPath
-        )
-
-        cell.textLabel?.text = item.title
-        cell.accessoryType = .disclosureIndicator
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DemoCell", for: indexPath)
+        cell.textLabel?.text = demos[indexPath.row].title
         return cell
     }
 }
@@ -54,19 +43,8 @@ extension DemoListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension DemoListViewController: UITableViewDelegate {
 
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        let item = demos[indexPath.row]
-        switch item {
-        case .raceCondition:
-            navigationController?.pushViewController(
-                RaceConditionViewController.make(),
-                animated: true
-            )
-        }
+        demos[indexPath.row].run()
     }
 }
