@@ -1,18 +1,41 @@
-## Evidence: Thread Sanitizer (TSAN)
+# 04 — Thread Safety
 
-When running `BrokenCounter` under concurrent increments, TSAN reports a data race in:
+Thread safety is about **state ownership**, not threads.
 
-- `RaceConditionDemo.BrokenCounter.increment()` (`value += 1`)
+---
 
-The same workload with `LockBasedCounter`, `SerialQueueCounter`, and `ActorCounter` produces the expected result (`iterations`) without TSAN race warnings.
+## Common misconception
 
+“async means thread-safe” — false.
 
-### Expected output (example)
+Concurrency increases the chance of races.
 
-Broken:
-- ~50k–65k / 200k (varies per run)
+---
 
-Fixed:
-- Lock: 200k / 200k
-- Queue: 200k / 200k
-- Actor: 200k / 200k
+## Thread safety tools
+
+- locks
+- serial queues
+- actors
+- immutability
+
+Each has trade-offs.
+
+---
+
+## What we demonstrate
+
+- broken counter with races
+- fixes using lock / queue / actor
+- TSAN evidence
+
+---
+
+## Takeaway
+
+Thread safety must be:
+- explicit
+- measurable
+- enforced by structure
+
+Hope is not a strategy.

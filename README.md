@@ -2,10 +2,13 @@
 
 Production-focused iOS concurrency & performance case studies.
 
-This repository demonstrates real-world bugs, root-cause analysis, fixes, and trade-offs using:
+This repository demonstrates **real-world bugs**, **root-cause analysis**, and **measured fixes**
+using modern Swift concurrency and Apple performance tools.
+
+Topics covered:
 - async/await vs GCD
 - Actor isolation
-- Cancellation propagation
+- Cancellation & cooperative cancellation
 - Thread safety patterns
 - ARC & retain cycles
 - Instruments (Time Profiler, Leaks, Allocations, Hangs, Signposts, TSAN)
@@ -16,16 +19,17 @@ This repository demonstrates real-world bugs, root-cause analysis, fixes, and tr
 
 ## Who this is for
 
-If you can “make it work” already, this repo is about making it:
+If you already know how to “make it work”, this repo is about making it:
+
 - **Correct under concurrency**
 - **Observable and measurable**
 - **Maintainable under change**
 - **Safe under load**
 
 The **Senior → Principal** difference becomes clear in how you:
-- reason about failure modes,
-- validate with evidence (Instruments/metrics),
-- document trade-offs and rollout strategy.
+- reason about failure modes
+- validate fixes with evidence (Instruments, TSAN)
+- document trade-offs and rollout strategy
 
 ---
 
@@ -45,13 +49,11 @@ Run:
 ---
 
 ## Project structure
-
 Apps/
 DemoApp/
 Modules/
 CoreLogging/
 CoreBenchmarks/
-Demos/ (coming)
 Docs/
 01-async-await-vs-gcd.md
 02-actor-isolation.md
@@ -74,21 +76,22 @@ What does the user / QA / monitoring observe?
 Root cause explained with concurrency primitives and timing.
 
 ### 3) How we fixed it
-Concrete changes in code (actors, cancellation, isolation, queues/locks, etc.)
+Concrete changes in code (actors, cancellation, isolation, queues/locks).
 
 ### 4) Evidence
-Benchmarks + Instruments screenshots / logs (TSAN/Signposts/Hangs/Leaks)
+Benchmarks + Instruments screenshots / logs (TSAN / Signposts / Hangs).
 
 ### 5) Why this matters in production
 Trade-offs, edge cases, rollout notes, monitoring signals.
 
 ---
 
-## Demos (coming)
+## Demos
 
 - Race condition demo (TSAN + fixes)
 - Actor vs serial queue benchmark
-- Cancellation (search-as-you-type)
+- Cancellation & cooperative cancellation
+- ViewModel-style cancellation
 - Memory leak case study (ARC + Tasks)
 - UI freeze root-cause analysis (Hangs + signposts)
 
@@ -96,15 +99,15 @@ Trade-offs, edge cases, rollout notes, monitoring signals.
 
 ## Docs index
 
-- [01 - async/await vs GCD](Docs/01-async-await-vs-gcd.md)
-- [02 - Actor isolation](Docs/02-actor-isolation.md)
-- [03 - Cancellation](Docs/03-cancellation.md)
-- [04 - Thread safety](Docs/04-thread-safety.md)
-- [05 - ARC & retain cycles](Docs/05-arc-retain-cycles.md)
-- [06 - Instruments playbook](Docs/06-instruments-playbook.md)
+- [01 – async/await vs GCD](Docs/01-async-await-vs-gcd.md)
+- [02 – Actor isolation](Docs/02-actor-isolation.md)
+- [03 – Cancellation](Docs/03-cancellation.md)
+- [04 – Thread safety](Docs/04-thread-safety.md)
+- [05 – ARC & retain cycles](Docs/05-arc-retain-cycles.md)
+- [06 – Instruments playbook](Docs/06-instruments-playbook.md)
 
 ---
 
 ## License
 
-MIT (to be added).
+MIT
